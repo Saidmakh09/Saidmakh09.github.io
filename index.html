@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Said.M's Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
             color: #333;
             max-width: 800px;
@@ -23,9 +22,8 @@
             background-color: #f0f0f0;
             border: none;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
-        .tab:hover, .tab.active {
+        .tab.active {
             background-color: #ddd;
         }
         .tab-content {
@@ -61,26 +59,20 @@
             color: #fff;
             text-decoration: none;
         }
-        .boxx a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
     <h1>Said Makh</h1>
     
     <div class="tabs">
-        <button class="tab active" onclick="openTab(event, 'about')">About</button>
-        <button class="tab" onclick="openTab(event, 'projects')">Projects</button>
-        <button class="tab" onclick="openTab(event, 'socials')">Socials</button>
+        <button class="tab active" onclick="openTab('about')">About</button>
+        <button class="tab" onclick="openTab('projects')">Projects</button>
+        <button class="tab" onclick="openTab('socials')">Socials</button>
     </div>
 
     <div id="about" class="tab-content active">
         <p>I was born in Uzbekistan and traveled across the world to further my education in the U.S.</p>
-        <p>(full name is Saidmakhmud Makhkamjonov)</p>
-		<p>Major: Computer Science Minor: Mathematical Biology.</p>
-		<p>Expected Graduation: December 2025</p>
-		<img src="images/Belmont_logo.png" alt="Belmont Logo"> 
+        <p>(In case you are interested, my full name is Saidmakhmud Makhkamjonov)</p>
     </div>
 
     <div id="projects" class="tab-content">
@@ -88,11 +80,11 @@
         <h3>Stoopid App:</h3>
         <p>These were the initial designs for the app using Figma</p>
         <div class="image-sidebar">
-            <img src="images/designs .png" alt="designs">
-            <img src="images/dark_design.png" alt="dark_design">
+            <img src="designs.png" alt="designs">
+            <img src="dark_design.png" alt="dark_design">
         </div>
         <p>This app was created using Swift and Firebase. It allows users to create and manage their own profiles, as well as view and interact with other users' profiles.</p>
-        <p>You can find the source code on, where I colloborated closely with my partner <a href="https://github.com/Saidmakh09/triviaApp">GitHub</a>.</p>
+        <p>You can find the source code on <a href="https://github.com/Saidmakh09/triviaApp">GitHub</a>.</p>
         <p><a href="#">Learn more</a></p>
     </div>
 
@@ -109,18 +101,18 @@
     </div>
 
     <script>
-        function openTab(evt, tabName) {
+        function openTab(tabName) {
             var i, tabContent, tabLinks;
             tabContent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabContent.length; i++) {
-                tabContent[i].style.display = "none";
+                tabContent[i].className = tabContent[i].className.replace(" active", "");
             }
             tabLinks = document.getElementsByClassName("tab");
             for (i = 0; i < tabLinks.length; i++) {
                 tabLinks[i].className = tabLinks[i].className.replace(" active", "");
             }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
+            document.getElementById(tabName).className += " active";
+            document.querySelector(`[onclick="openTab('${tabName}')"]`).className += " active";
         }
     </script>
 </body>
